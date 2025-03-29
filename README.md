@@ -4,13 +4,13 @@
 **LIMO (Linux Monitor)** is a powerful and interactive Bash-based **system monitoring tool** designed to keep your Linux system running smoothly. It provides real-time monitoring, **auto-healing** for high CPU usage, process management, network bandwidth monitoring, and comprehensive log tracking—all with an intuitive interface and **Telegram alerts**. 📊💡
 
 ## ✨ Features (Enhanced in v2.0)
-✅ **Real-time System Monitoring** – Stay informed about CPU, memory, disk, and network usage with improved metrics
+✅ **Real-time Monitoring** – Stay informed about CPU, memory, disk, and network usage with improved metrics
 
 ✅ **Enhanced Auto-Healing** – Now runs for 24-hour cycles with configurable check intervals (default: 60s)
 
-✅ **Advanced Process Management** – Search/filter processes by name and view detailed CPU/MEM usage before killing
+✅ **Advanced Process Management** – Filter processes by name and view detailed CPU/MEM usage before killing
 
-✅ **Network Bandwidth Monitoring** – View real-time **internet speed usage** with human-readable format (KB/s, MB/s, GB/s) 🌐
+✅ **Network Bandwidth Monitoring** – View real-time **internet speed** with human-readable format (KB/s, MB/s, GB/s) 🌐
 
 ✅ **Comprehensive Logging System** – New toggleable monitoring with:
    - 30-minute monitoring sessions
