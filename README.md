@@ -1,33 +1,44 @@
 # 🚀 LIMO - (Advanced System Monitoring & Auto-Healing) 🔥
 
 ## 📝 Overview
-**LIMO (Linux Monitor)** is a powerful and interactive Bash-based **system monitoring tool** designed to keep your Linux system running smoothly. It provides real-time monitoring, **auto-healing** for high CPU usage, process management, network bandwidth monitoring, and log tracking—all with an intuitive interface and **Telegram alerts**. 📊💡
+**LIMO (Linux Monitor)** is a powerful and interactive Bash-based **system monitoring tool** designed to keep your Linux system running smoothly. It provides real-time monitoring, **auto-healing** for high CPU usage, process management, network bandwidth monitoring, and comprehensive log tracking—all with an intuitive interface and **Telegram alerts**. 📊💡
 
-## ✨ Features
-✅ **Real-time System Monitoring** – Stay informed about CPU and memory usage.
+## ✨ Features (Enhanced in v2.0)
+✅ **Real-time System Monitoring** – Stay informed about CPU, memory, disk, and network usage with improved metrics
 
-✅ **Auto-Healing** – Automatically detects and terminates high CPU-consuming processes. 🚑
+✅ **Enhanced Auto-Healing** – Now runs for 24-hour cycles with configurable check intervals (default: 60s)
 
-✅ **Process Management** – Search and manually **kill processes** by name or PID. 🛠️
+✅ **Advanced Process Management** – Search/filter processes by name and view detailed CPU/MEM usage before killing
 
-✅ **Network Bandwidth Monitoring** – View real-time **internet speed usage**. 🌐
+✅ **Network Bandwidth Monitoring** – View real-time **internet speed usage** with human-readable format (KB/s, MB/s, GB/s) 🌐
 
-✅ **Interactive Menu** – User-friendly dashboard using `whiptail`.
+✅ **Comprehensive Logging System** – New toggleable monitoring with:
+   - 30-minute monitoring sessions
+   - 5-second interval data collection
+   - PID file tracking to prevent duplicates
 
-✅ **Logging & Alerts** – View system logs and receive **Telegram notifications** for all actions.
+✅ **Expanded Log Viewer** – Now includes:
+   - System monitor logs
+   - Cloud-init logs
+   - Package manager history
+   - User login history
+   - Failed login attempts
+   - Critical system errors
 
-✅ **Manual & Auto Controls** – Toggle auto-healing and monitoring features with ease. 🔄
+✅ **Improved Dependency Management** – Automatic installation of missing packages with support for:
+   - apt (Debian/Ubuntu)
+   - dnf/yum (RHEL/CentOS)
+
+✅ **Interactive Menu** – User-friendly dashboard using `whiptail` with better organization
+
+✅ **Telegram Integration** – Enhanced alerts for all major actions
 
 ---
 
 ## 🔧 Installation & Setup
 ### 📌 Prerequisites
-Ensure your system has the following installed:
-- 🐧 **Bash** (default on most Linux distributions)
-- 🖥 **whiptail** (for interactive prompts)
-- 🔢 **bc** (for floating-point calculations)
-- 📊 **ps, top, awk, grep** (standard Linux utilities)
-- 📲 **Telegram Bot API** (optional for alerts)
+The script will now automatically check and install missing dependencies including:
+- `bc curl whiptail sysstat iproute2 procps coreutils gawk util-linux systemd`
 
 ### 📥 Installation Steps
 1️⃣ Clone this repository:
@@ -40,83 +51,81 @@ Ensure your system has the following installed:
    chmod +x limo.sh
    ```
 3️⃣ Configure environment variables in the script:
-   - **THRESHOLD_CPU**: Define the CPU usage percentage limit.
-   - **HEAL_INTERVAL**: Set the interval between system checks.
-   - **TELEGRAM_BOT_TOKEN & CHAT_ID**: (Optional) Configure Telegram alerts.
+   ```bash
+   THRESHOLD_CPU=80         # CPU usage threshold (in %)
+   HEAL_INTERVAL=60         # Interval in seconds between checks
+   REFRESH_RATE=1           # Dashboard refresh rate in seconds
+   BOT_TOKEN="your_bot_token" # Telegram bot token
+   CHAT_ID="your_chat_id"   # Telegram chat ID
+   ```
 
-## 🎛 Customization
-Modify these parameters in `limo.sh`:
+---
+
+## 🎛️ New Configuration Options
 ```bash
-THRESHOLD_CPU=80   # CPU usage threshold (in %)
-HEAL_INTERVAL=30   # Interval in seconds
-TELEGRAM_BOT_TOKEN="your_bot_token"
-CHAT_ID="your_chat_id"
+LOG_FILE="$HOME/limo/logs/sys_monitor.log"  # Centralized log location
+MONITOR_PID_FILE="/tmp/system_monitor.pid"  # PID tracking for monitoring
+MONITOR_SCRIPT="/tmp/system_monitor.sh"     # Temporary monitoring script
 ```
 
 ---
 
-## 📲 Setting Up Telegram Bot & Chat ID
-To receive alerts via Telegram, follow these steps:
-
-### 🔹 Get Your Telegram Bot Token
-1️⃣ Open Telegram and search for `@BotFather`.
-
-2️⃣ Start a chat and send `/newbot`.
-
-3️⃣ Follow the prompts to name your bot and get a **bot token**.
-
-4️⃣ Save this token to use in the script.
-
-### 🔹 Get Your Chat ID
-1️⃣ Open Telegram and search for `@userinfobot`.
-
-2️⃣ Start a chat and send `/start`.
-
-3️⃣ It will return your **chat ID**, which you need to set in the script.
-
----
-
-## 🚀 Usage
+## 🚀 Enhanced Usage
 ### ▶️ Start LIMO
-Run the script manually:
 ```bash
 ./limo.sh
 ```
-An interactive dashboard will appear, offering the following options:
 
-🔄 **Refresh** – Refresh the displayed system stats.
+### 🆕 New Dashboard Options:
+1️⃣ **Refresh** – Update system stats (configurable interval)
 
-⚡ **Kill a Process** – Search by name or PID and terminate a process.
+2️⃣ **Kill a Process** – Enhanced process search and selection
 
-📶 **Network Bandwidth Monitor** – View current internet speed usage.
+3️⃣ **Network Bandwidth Monitor** – Real-time speed tracking
 
-🔧 **Toggle Auto-Healing** – Enable or disable **auto-healing** to kill high CPU-consuming processes automatically.
+4️⃣ **Toggle Auto-Healing** – 24-hour healing cycles (default 60s checks)
 
-📜 **View Logs** – Display the 50 most recent system logs, including CPU/memory usage and network connections.
+5️⃣ **Toggle System Monitoring** – New! Start/stop 30-minute monitoring sessions
 
-🔔 **Telegram Alerts** – Receive real-time alerts for all operations.
+6️⃣ **View System Logs** – Expanded log categories:
+   - System Monitor Logs
+   - Cloud-init logs
+   - Package history
+   - Login history
+   - Failed logins
+   - Systemd errors
 
-### ⏹️ Stop Auto-Healing
-If the script is running, executing it again will prompt you to **disable auto-healing**. ❌
+7️⃣ **Exit** – Clean shutdown
 
 ---
 
-## 📜 Logging & Alerts
-- 📂 Logs of terminated processes are stored in `/tmp/limo.log`.
-- 📲 If enabled, alerts will be sent via Telegram.
+## 📜 Enhanced Logging System
+- **Monitoring Sessions**: Runs for 30 minutes by default, collecting data every 5 seconds
+- **Centralized Logs**: All data stored in `$HOME/limo/logs/sys_monitor.log`
+- **PID Tracking**: Prevents duplicate monitoring sessions
+- **Permission Management**: Automatic log file permission setting (644)
 
 ---
 
-## ⚙️ How It Works
-1️⃣ **Monitors CPU & system performance** in real-time.
+## ⚙️ Technical Improvements
+1️⃣ **Better Dependency Handling**:
+   - Automatic detection of package manager (apt/dnf/yum)
+   - Interactive installation prompts
+   - Comprehensive dependency mapping
 
-2️⃣ **Detects and kills** the highest CPU-consuming process when usage exceeds the threshold.
+2️⃣ **Improved Human-Readable Formatting**:
+   - Enhanced byte conversion for network speeds
+   - Better numeric formatting throughout
 
-3️⃣ **Sends a Telegram alert** upon any auto-healing or manual intervention.
+3️⃣ **More Robust Process Management**:
+   - Process search functionality
+   - Detailed process information before killing
+   - Confirmation prompts
 
-4️⃣ **Records all actions** in the system logs for transparency.
-
-5️⃣ **Auto-Heals continuously** for **24 hours** before stopping. 🔄
+4️⃣ **Enhanced Auto-Healing**:
+   - 24-hour runtime limit
+   - PID file tracking
+   - Better Telegram notifications
 
 ---
 
@@ -132,3 +141,16 @@ For any issues, reach out via **GitHub Issues** or **Email**.
 ---
 
 **Made with ❤️ by [Piyush Sharma](https://github.com/mechpiyush) ✨**
+
+**Version 2.0** - Now with enhanced monitoring, better logging, and improved user experience!
+
+Key changes from v1 to v2:
+- Added toggleable system monitoring
+- Expanded log viewing capabilities
+- Improved dependency management
+- Enhanced process management
+- Better network monitoring
+- More robust auto-healing
+- Improved user interface
+- Added confirmation prompts for major actions
+- Better Telegram integration
