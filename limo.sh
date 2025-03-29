@@ -2,9 +2,9 @@
 
 # Configuration
 LOG_FILE="$HOME/limo/logs/sys_monitor.log"
-THRESHOLD_CPU=3
-BOT_TOKEN="7756648526:AAGgP5pXQuhhyg5gqz83WBbp2ScvUH0wrrI"    # Check readme file to know how to get it.
-CHAT_ID="1276767407"
+THRESHOLD_CPU=80
+BOT_TOKEN="your_bot_token"    # Check readme file to know how to get it.
+CHAT_ID="your_chat_id"
 TELEGRAM_API="https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 REFRESH_RATE=1  # seconds for dashboard refresh
 HEAL_INTERVAL=60  # seconds between auto-heal checks
