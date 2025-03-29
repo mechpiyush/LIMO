@@ -44,6 +44,36 @@ Ensure your system has the following installed:
    - **HEAL_INTERVAL**: Set the interval between system checks.
    - **TELEGRAM_BOT_TOKEN & CHAT_ID**: (Optional) Configure Telegram alerts.
 
+## 🎛 Customization
+Modify these parameters in `limo.sh`:
+```bash
+THRESHOLD_CPU=80   # CPU usage threshold (in %)
+HEAL_INTERVAL=30   # Interval in seconds
+TELEGRAM_BOT_TOKEN="your_bot_token"
+CHAT_ID="your_chat_id"
+```
+
+---
+
+## 📲 Setting Up Telegram Bot & Chat ID
+To receive alerts via Telegram, follow these steps:
+
+### 🔹 Get Your Telegram Bot Token
+1️⃣ Open Telegram and search for `@BotFather`.
+
+2️⃣ Start a chat and send `/newbot`.
+
+3️⃣ Follow the prompts to name your bot and get a **bot token**.
+
+4️⃣ Save this token to use in the script.
+
+### 🔹 Get Your Chat ID
+1️⃣ Open Telegram and search for `@userinfobot`.
+
+2️⃣ Start a chat and send `/start`.
+
+3️⃣ It will return your **chat ID**, which you need to set in the script.
+
 ---
 
 ## 🚀 Usage
@@ -87,38 +117,6 @@ If the script is running, executing it again will prompt you to **disable auto-h
 4️⃣ **Records all actions** in the system logs for transparency.
 
 5️⃣ **Auto-Heals continuously** for **24 hours** before stopping. 🔄
-
----
-
-## 🎛 Customization
-Modify these parameters in `limo.sh`:
-```bash
-THRESHOLD_CPU=80   # CPU usage threshold (in %)
-HEAL_INTERVAL=30   # Interval in seconds
-TELEGRAM_BOT_TOKEN="your_bot_token"
-CHAT_ID="your_chat_id"
-```
-
----
-
-## 📲 Setting Up Telegram Bot & Chat ID
-To receive alerts via Telegram, follow these steps:
-
-### 🔹 Get Your Telegram Bot Token
-1️⃣ Open Telegram and search for `@BotFather`.
-
-2️⃣ Start a chat and send `/newbot`.
-
-3️⃣ Follow the prompts to name your bot and get a **bot token**.
-
-4️⃣ Save this token to use in the script.
-
-### 🔹 Get Your Chat ID
-1️⃣ Open Telegram and search for `@userinfobot`.
-
-2️⃣ Start a chat and send `/start`.
-
-3️⃣ It will return your **chat ID**, which you need to set in the script.
 
 ---
 
